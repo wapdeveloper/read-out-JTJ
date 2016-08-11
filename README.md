@@ -1,2 +1,4 @@
 # read-out-JTJ
-C# vision
+C# vision 产生并验证结果
+
+
