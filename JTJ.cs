@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,10 +14,10 @@ namespace JtJ
         static void Main(string[] args)
         {
             Matrix<double> J = Matrix<double>.Build.Dense(125, 8);
-            string[] all = File.ReadAllLines("d://in.txt");
+            string[] all = File.ReadAllLines("in.txt");
             for (int i = 0; i < all.Length; i++)
             {
-                string[] eachline = Regex.Split(all[i], "   ", RegexOptions.IgnoreCase);
+                string[] eachline = all[i].Split(new string[] { "  " }, StringSplitOptions.RemoveEmptyEntries);
                 for (int j = 0; j < eachline.Length - 1; j++)
                 {
                     J[i, j] = double.Parse(eachline[j]);
@@ -26,7 +26,7 @@ namespace JtJ
             //方法1：
             Matrix<double> Jt = J.Transpose();
             Matrix<double> JtJ = Jt * J;
-            File.WriteAllText("d://out.txt", JtJ.ToString());
+            File.WriteAllText("out.txt", JtJ.ToString());
             Console.WriteLine(JtJ);
             Console.WriteLine(JtJ.Inverse());
 
